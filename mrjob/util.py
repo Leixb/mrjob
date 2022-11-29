@@ -422,6 +422,6 @@ def zip_dir(dir, out_path, filter=None, prefix=''):
 # this is also used by spark runner
 def _create_zip_file(path):
     try:
-        return ZipFile(path, mode='w', compression=ZIP_DEFLATED)
+        return ZipFile(path, mode='w', strict_timestamps=False, compression=ZIP_DEFLATED)
     except RuntimeError:  # zlib not available
-        return ZipFile(path, mode='w', compression=ZIP_STORED)
+        return ZipFile(path, mode='w', strict_timestamps=False, compression=ZIP_STORED)
